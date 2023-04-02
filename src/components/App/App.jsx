@@ -1,14 +1,11 @@
-import { Container } from './App.styled';
-import { Profile } from '../Profile/Profile';
-import { Statistics } from '../Statistics/Statistics';
+import PropTypes from 'prop-types';
+import { Container } from 'components/App/App.styled';
+import { Profile } from 'components/Profile/Profile';
+import { Statistics } from 'components/Statistics/Statistics';
 import { FriendList } from 'components/FriendList/FriendList';
 import { TransactionHistory } from 'components/TransactionHistory/TransactionHistory';
-import user from 'data/user.json';
-import data from 'data/data.json';
-import friends from 'data/friends.json';
-import transactions from 'data/transactions.json';
 
-export const App = () => {
+export const App = ({ user, data, friends, transactions }) => {
   return (
     <Container>
       <Profile
@@ -24,4 +21,41 @@ export const App = () => {
       <TransactionHistory transactions={transactions} />
     </Container>
   );
+};
+
+App.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
+  friends: PropTypes.arrayOf(
+    PropTypes.exact({
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ),
+  transactions: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ),
+  user: PropTypes.exact({
+    username: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    stats: PropTypes.exact({
+      followers: PropTypes.number.isRequired,
+      views: PropTypes.number.isRequired,
+      likes: PropTypes.number.isRequired,
+    }),
+  }),
 };

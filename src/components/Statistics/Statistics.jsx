@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import {
   StatsSection,
   StatsTitle,
@@ -35,4 +36,15 @@ export const Statistics = ({ title, stats }) => {
       </StatsList>
     </StatsSection>
   );
+};
+
+Statistics.propTypes = {
+  stats: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
+  title: PropTypes.string
 };
