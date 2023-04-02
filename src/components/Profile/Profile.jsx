@@ -38,14 +38,14 @@ export const Profile = ({ username, tag, location, avatar, stats }) => {
   );
 };
 
-Profile.propTypes = PropTypes.exact({
-  username: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+Profile.propTypes = {
+  username: PropTypes.string,
+  tag: PropTypes.string,
+  location: PropTypes.string,
+  avatar: PropTypes.string,
   stats: PropTypes.exact({
-    followers: PropTypes.number.isRequired,
-    views: PropTypes.number.isRequired,
-    likes: PropTypes.number.isRequired,
-  }),
-});
+    followers: PropTypes.number,
+    views: PropTypes.number,
+    likes: PropTypes.number,
+  }).isRequired,
+};
