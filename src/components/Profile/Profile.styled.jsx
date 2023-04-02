@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { getColor } from 'utils';
 
 export const ProfileCard = styled.div`
   width: 250px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
@@ -42,7 +43,7 @@ export const ProfileStats = styled.ul`
   display: flex;
   justify-content: space-between;
   list-style: none;
-  background-color: #e9f5f9;
+  background-color: ${getColor};
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   li {
     width: calc(100% / 3);

@@ -1,4 +1,5 @@
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
+import { getColor } from 'utils';
 import {
   StatsSection,
   StatsTitle,
@@ -7,18 +8,6 @@ import {
   StatsLabel,
   StatsPercentage,
 } from './Statistics.styled';
-
-function getColor() {
-  return (
-    'hsl(' +
-    360 * Math.random() +
-    ',' +
-    (25 + 70 * Math.random()) +
-    '%,' +
-    (85 + 10 * Math.random()) +
-    '%)'
-  );
-}
 
 export const Statistics = ({ title, stats }) => {
   return (
@@ -29,7 +18,7 @@ export const Statistics = ({ title, stats }) => {
           return (
             <StatsItem color={getColor()} key={id}>
               <StatsLabel>{label}</StatsLabel>
-              <StatsPercentage>{percentage}</StatsPercentage>
+              <StatsPercentage>{percentage}%</StatsPercentage>
             </StatsItem>
           );
         })}
@@ -46,5 +35,5 @@ Statistics.propTypes = {
       percentage: PropTypes.number.isRequired,
     })
   ),
-  title: PropTypes.string
+  title: PropTypes.string,
 };
