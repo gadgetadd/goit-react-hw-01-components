@@ -18,7 +18,9 @@ export const FriendList = ({ friends }) => {
 };
 
 FriendList.propTypes = {
-  friend: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-  }),
+  friend: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ),
 };
